@@ -39,7 +39,10 @@
         console.log("sending out");
         xmlHttp.open( "GET", theUrl ); // false for synchronous request
         xmlHttp.onreadystatechange = function() {
-            console.log(xmlHttp.responseText);
+           if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+             let field = document.getElementById("thanks");
+             field.innerHTML = "Thank !"
+            }
         };
         xmlHttp.send();
     }
@@ -78,8 +81,10 @@
          <form class="form-inline" role="form">
             <div class="form-group">
               <input type="email" class="form-control" id="mailfield" placeholder="Enter your email address">
+             
             </div>
             <button type="button" class="btn btn-warning btn-lg" onclick="add()">Invite Me!</button>
+             <div style="color:#ffffff" id="thanks"></div>
           </form>
         </div>
         <!-- /col-lg-6 -->
