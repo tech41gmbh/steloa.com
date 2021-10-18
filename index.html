@@ -29,6 +29,23 @@
     Author: TemplateMag.com
     License: https://templatemag.com/license/
   ======================================================= -->
+  <script>
+
+    function add(){
+      email = document.getElementById("mailfield").value;
+        const xmlHttp = new XMLHttpRequest();
+        const theUrl = "https://europe-west3-thematic-flash-328716.cloudfunctions.net/storemail?email=" + email;
+
+        console.log("sending out");
+        xmlHttp.open( "GET", theUrl ); // false for synchronous request
+        xmlHttp.onreadystatechange = function() {
+            console.log(xmlHttp.responseText);
+        };
+        xmlHttp.send();
+    }
+
+  </script>
+
 </head>
 
 <body>
@@ -58,12 +75,12 @@
       <div class="row">
         <div class="col-lg-6">
           <h1>Steloa - ERC20 Token</h1>
-         <!-- <form class="form-inline" role="form">
+         <form class="form-inline" role="form">
             <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
+              <input type="email" class="form-control" id="mailfield" placeholder="Enter your email address">
             </div>
-            <button type="submit" class="btn btn-warning btn-lg">Invite Me!</button>
-          </form>-->
+            <button type="button" class="btn btn-warning btn-lg" onclick="add()">Invite Me!</button>
+          </form>
         </div>
         <!-- /col-lg-6 -->
         <div class="col-lg-6">
